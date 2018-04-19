@@ -67,7 +67,7 @@ RUN set -x \
     && echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen \
     && locale-gen \
     && cd /tmp \
-    && git clone https://github.com/processone/ejabberd.git \
+    && git clonehttps://whizpool_web_team:WHP**l190418@bitbucket.org/whizpool_web_team/lynkxmpp.git \
     && cd ejabberd \
     && chmod +x ./autogen.sh \
     && ./autogen.sh \
