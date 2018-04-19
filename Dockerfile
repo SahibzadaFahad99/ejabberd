@@ -1,7 +1,7 @@
 FROM debian:stretch-slim
 MAINTAINER Rafael Römhild <rafael@roemhild.de>
 
-RUN apt-get update && apt-get install -y apt-transport-https
+RUN apt-get clean &&  apt-get update && apt-get install -y apt-transport-https
 
 
 ENV EJABBERD_USER=lynkxmpp \
