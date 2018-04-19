@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM ubuntu:16.04
 MAINTAINER Rafael Römhild <rafael@roemhild.de>
 
 ENV EJABBERD_USER=lynkxmpp \
