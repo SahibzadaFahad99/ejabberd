@@ -1,8 +1,7 @@
 FROM debian:stretch-slim
 MAINTAINER Rafael Römhild <rafael@roemhild.de>
 
-ENV EJABBERD_BRANCH=v1 \
-    EJABBERD_USER=lynkxmpp \
+ENV EJABBERD_USER=lynkxmpp \
     EJABBERD_HTTPS=true \
     EJABBERD_STARTTLS=true \
     EJABBERD_S2S_SSL=true \
@@ -69,7 +68,6 @@ RUN set -x \
     && locale-gen \
     && cd /tmp \
     && git clone https://whizpool_web_team:WHP**l190418@bitbucket.org/whizpool_web_team/lynkxmpp.git \
-        --branch $EJABBERD_BRANCH --single-branch --depth=1 \
     && cd ejabberd \
     && chmod +x ./autogen.sh \
     && ./autogen.sh \
