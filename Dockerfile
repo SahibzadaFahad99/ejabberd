@@ -1,4 +1,4 @@
-FROM ubuntu:14.04.4
+FROM ubuntu:latest
 MAINTAINER Rafael Römhild <rafael@roemhild.de>
 
 RUN apt-get update && apt-get install -y apt-transport-https
