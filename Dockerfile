@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:12.04
 MAINTAINER Rafael Römhild <rafael@roemhild.de>
 
 ENV EJABBERD_USER=lynkxmpp \
