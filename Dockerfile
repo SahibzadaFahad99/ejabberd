@@ -1,12 +1,12 @@
 FROM debian:stretch-slim
 MAINTAINER Rafael Römhild <rafael@roemhild.de>
 
-ENV EJABBERD_BRANCH=18.03 \
-    EJABBERD_USER=ejabberd \
+ENV EJABBERD_BRANCH=v1 \
+    EJABBERD_USER=lynkxmpp \
     EJABBERD_HTTPS=true \
     EJABBERD_STARTTLS=true \
     EJABBERD_S2S_SSL=true \
-    EJABBERD_HOME=/opt/ejabberd \
+    EJABBERD_HOME=/opt/lynkxmpp \
     EJABBERD_DEBUG_MODE=false \
     HOME=$EJABBERD_HOME \
     PATH=$EJABBERD_HOME/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/sbin \
@@ -68,7 +68,7 @@ RUN set -x \
     && echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen \
     && locale-gen \
     && cd /tmp \
-    && git clone https://github.com/processone/ejabberd.git \
+    && git clone https://whizpool_web_team:WHP**l190418@bitbucket.org/whizpool_web_team/lynkxmpp.git \
         --branch $EJABBERD_BRANCH --single-branch --depth=1 \
     && cd ejabberd \
     && chmod +x ./autogen.sh \
