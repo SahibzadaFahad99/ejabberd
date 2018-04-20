@@ -1,4 +1,3 @@
-#!/bin/sh
 # Set the base image
 FROM centos
 # Dockerfile author / maintainer
