@@ -1,4 +1,4 @@
-FROM centos:7
+FROM ubuntu:latest
 MAINTAINER Rafael Römhild <rafael@roemhild.de>
 
 ENV EJABBERD_BRANCH=18.03 \
@@ -60,8 +60,8 @@ RUN set -x \
         python-jinja2 \
         python-mysqldb \
     ' \
-    && yum update \
-    && yum install -y $buildDeps $requiredAptPackages --no-install-recommends \
+    && apt-get update \
+    && apt-get install -y $buildDeps $requiredAptPackages --no-install-recommends \
     && dpkg-reconfigure locales && \
         locale-gen C.UTF-8 \
     && /usr/sbin/update-locale LANG=C.UTF-8 \
