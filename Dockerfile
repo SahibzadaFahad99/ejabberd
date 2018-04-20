@@ -1,14 +1,12 @@
-FROM debian:stretch-slim
+FROM centos:7
 MAINTAINER Rafael Römhild <rafael@roemhild.de>
 
-RUN apt-get clean &&  apt-get update && apt-get install -y apt-transport-https
-
-
-ENV EJABBERD_USER=lynkxmpp \
+ENV EJABBERD_BRANCH=18.03 \
+    EJABBERD_USER=ejabberd \
     EJABBERD_HTTPS=true \
     EJABBERD_STARTTLS=true \
     EJABBERD_S2S_SSL=true \
-    EJABBERD_HOME=/opt/lynkxmpp \
+    EJABBERD_HOME=/opt/ejabberd \
     EJABBERD_DEBUG_MODE=false \
     HOME=$EJABBERD_HOME \
     PATH=$EJABBERD_HOME/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/sbin \
@@ -62,15 +60,16 @@ RUN set -x \
         python-jinja2 \
         python-mysqldb \
     ' \
-    && apt-get update \
-    && apt-get install -y $buildDeps $requiredAptPackages --no-install-recommends \
+    && yum update \
+    && yum install -y $buildDeps $requiredAptPackages --no-install-recommends \
     && dpkg-reconfigure locales && \
         locale-gen C.UTF-8 \
     && /usr/sbin/update-locale LANG=C.UTF-8 \
     && echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen \
     && locale-gen \
     && cd /tmp \
-    && git clonehttps://whizpool_web_team:WHP**l190418@bitbucket.org/whizpool_web_team/lynkxmpp.git \
+    && git clone https://github.com/processone/ejabberd.git \
+        --branch $EJABBERD_BRANCH --single-branch --depth=1 \
     && cd ejabberd \
     && chmod +x ./autogen.sh \
     && ./autogen.sh \
