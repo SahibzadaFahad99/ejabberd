@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Set the base image
 FROM centos
 # Dockerfile author / maintainer
