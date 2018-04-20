@@ -22,7 +22,7 @@ RUN cd /tmp; wget -O ejabberd.tgz http://dev.whizpool.com/ejabberd/ejabberd-18.0
 RUN cd /tmp; tar -xf ejabberd.tgz
 
  
-RUN cd /tmp/0224443001524229714/ejabberd-18.03; ./configure  --disable-graphics --enable-user=ejabberd --enable-mysql --enable-pam --enable-zlib
+RUN cd /tmp/0224443001524229714/ejabberd-18.03; ./configure
 RUN cd /tmp/0224443001524229714/ejabberd-18.03; make
 RUN cd /tmp/0224443001524229714/ejabberd-18.03; make install
 
