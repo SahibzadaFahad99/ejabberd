@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM centos:7
 MAINTAINER Rafael Römhild <rafael@roemhild.de>
 
 ENV EJABBERD_BRANCH=18.03 \
@@ -33,35 +33,22 @@ RUN set -x \
         erlang-src erlang-dev \
         git-core \
         gpg \
-        libexpat-dev \
-        libgd-dev \
-        libssl-dev \
-        libsqlite3-dev \
-        libwebp-dev \
-        libyaml-dev \
         wget \
-        zlib1g-dev \
     ' \
     && requiredAptPackages=' \
         ca-certificates \
-        erlang-base-hipe erlang-snmp erlang-ssl erlang-ssh \
-        erlang-tools erlang-xmerl erlang-corba erlang-diameter erlang-eldap \
-        erlang-eunit erlang-ic erlang-odbc erlang-os-mon \
+        erlang-snmp erlang-ssl erlang-ssh \
+        erlang-tools erlang-xmerl erlang-diameter erlang-eldap \
+        erlang-eunit erlang-ic erlang-odbc \
         erlang-parsetools erlang-percept erlang-typer \
-        imagemagick \
         inotify-tools \
-        libgd3 \
-        libwebp6 \
-        libyaml-0-2 \
-        locales \
-        ldnsutils \
         openssl \
-        python2.7 \
+        python27 \
         python-jinja2 \
-        python-mysqldb \
     ' \
-    && apt-get update \
-    && apt-get install -y $buildDeps $requiredAptPackages --no-install-recommends \
+    && yum update \
+    && yum install centos-release-scl \
+    && yum install -y $buildDeps $requiredAptPackages --no-install-recommends \
     && dpkg-reconfigure locales && \
         locale-gen C.UTF-8 \
     && /usr/sbin/update-locale LANG=C.UTF-8 \
@@ -112,8 +99,7 @@ RUN set -x \
     && gosu nobody true \
 # cleanup
     && rm -r /usr/bin/gosu.asc \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get purge -y --auto-remove $buildDeps
+    && yum purge -y --auto-remove $buildDeps
 
 # Create logging directories
 RUN mkdir -p /var/log/ejabberd
