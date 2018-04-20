@@ -21,8 +21,5 @@ RUN yum install -y esl-erlang
 RUN cd /tmp; wget -O ejabberd.tgz http://dev.whizpool.com/ejabberd/ejabberd-18.03.tar.gz
 RUN cd /tmp; tar -xf ejabberd.tgz
 
-RUN cd /tmp/ejabberd-18.03; ./configure  --disable-graphics --enable-user=ejabberd --enable-mysql --enable-pam --enable-zlib
-RUN cd /tmp/ejabberd-18.03; make
-RUN cd /tmp/ejabberd-18.03; make install
 
 CMD ["/usr/local/sbin/ejabberdctl","foreground"]
