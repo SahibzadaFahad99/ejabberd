@@ -1,4 +1,4 @@
-FROM centos:7
+FROM debian:stretch-slim
 MAINTAINER Rafael Römhild <rafael@roemhild.de>
 
 ENV EJABBERD_BRANCH=18.03 \
@@ -28,25 +28,40 @@ RUN groupadd -r $EJABBERD_USER \
 RUN set -x \
     && buildDeps=' \
         automake \
+        build-essential \
+        dirmngr \
+        erlang-src erlang-dev \
         git-core \
         gpg \
+        libexpat-dev \
+        libgd-dev \
+        libssl-dev \
+        libsqlite3-dev \
+        libwebp-dev \
+        libyaml-dev \
         wget \
+        zlib1g-dev \
     ' \
     && requiredAptPackages=' \
         ca-certificates \
-        erlang-snmp erlang-ssl erlang-ssh \
-        erlang-tools erlang-xmerl erlang-diameter erlang-eldap \
-        erlang-eunit erlang-ic erlang-odbc \
+        erlang-base-hipe erlang-snmp erlang-ssl erlang-ssh \
+        erlang-tools erlang-xmerl erlang-corba erlang-diameter erlang-eldap \
+        erlang-eunit erlang-ic erlang-odbc erlang-os-mon \
         erlang-parsetools erlang-percept erlang-typer \
+        imagemagick \
         inotify-tools \
+        libgd3 \
+        libwebp6 \
+        libyaml-0-2 \
+        locales \
+        ldnsutils \
         openssl \
-        python27 \
+        python2.7 \
         python-jinja2 \
         python-mysqldb \
     ' \
-    && yum update \
-    && yum install centos-release-scl # install SCL \
-    && yum install -y $buildDeps $requiredAptPackages --no-install-recommends \
+    && apt-get update \
+    && apt-get install -y $buildDeps $requiredAptPackages --no-install-recommends \
     && dpkg-reconfigure locales && \
         locale-gen C.UTF-8 \
     && /usr/sbin/update-locale LANG=C.UTF-8 \
@@ -97,7 +112,8 @@ RUN set -x \
     && gosu nobody true \
 # cleanup
     && rm -r /usr/bin/gosu.asc \
-    && yum purge -y --auto-remove $buildDeps
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get purge -y --auto-remove $buildDeps
 
 # Create logging directories
 RUN mkdir -p /var/log/ejabberd
