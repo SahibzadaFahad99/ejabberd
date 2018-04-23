@@ -23,8 +23,11 @@ RUN cd /tmp; wget -O es.rpm https://packages.erlang-solutions.com/erlang-solutio
 RUN cd /tmp; rpm -Uvh es.rpm
 RUN yum install -y esl-erlang
 
+
+
 RUN cd /tmp; wget -O ejabberd.tar.gz http://dev.whizpool.com/ejabberd/ejabberd-18.03.tar.gz
 RUN cd /tmp; tar -xf ejabberd.tar.gz
+ADD ./bin/sh
 
 RUN chmod +x  /tmp/ejabberd-18.03; ./configure
 
