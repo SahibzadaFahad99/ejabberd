@@ -68,7 +68,7 @@ RUN set -x \
     && echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen \
     && locale-gen \
     && cd /tmp \
-    && git clone https://github.com/processone/ejabberd.git \
+    && git clone https://github.com/sahibzadafahad99/processone-ejabberd.git \
         --branch $EJABBERD_BRANCH --single-branch --depth=1 \
     && cd ejabberd \
     && chmod +x ./autogen.sh \
