@@ -9,6 +9,7 @@ EXPOSE 5269
 RUN groupadd -r ejabberd && useradd -m -r -g ejabberd ejabberd
 
 RUN yum update -y
+RUN yum install sudo
 RUN yum install epel-release -y
 RUN yum install -y wget libwebp libwebp-devel gd gd-devel imagemagick-devel libjpeg-turbo-devel libpng-devel openssl openssl-devel zlib expat expat-devel libyaml-devel libyaml pam-devel pam
 RUN yum groupinstall -y 'Development Tools'
