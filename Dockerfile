@@ -28,10 +28,6 @@ RUN yum install -y esl-erlang
 RUN cd /tmp; wget -O ejabberd.tar.gz http://dev.whizpool.com/ejabberd/ejabberd-18.03.tar.gz
 RUN cd /tmp; tar -xf ejabberd.tar.gz
 
-ADD /tmp/ejabberd-18.03; ./configure/bin/sh
-
-RUN chmod +x  /tmp/ejabberd-18.03; ./configure
-
 RUN cd /tmp/ejabberd-18.03; ./configure --enable-user=ejabberd
 RUN cd /tmp/ejabberd-18.03; make
 RUN cd /tmp/ejabberd-18.03; make install
