@@ -30,7 +30,7 @@ RUN cd /tmp; tar -xf ejabberd.tar.gz
 
 
 
-RUN cd /tmp/ejabberd-18.03/configure  --disable-graphics --enable-user=ejabberd --enable-mysql --enable-pam --enable-zlib
+RUN cd /tmp/ejabberd-18.03; ./configure  --disable-graphics --enable-user=ejabberd --enable-mysql --enable-pam --enable-zlib
 RUN cd /tmp/ejabberd-18.03; make
 RUN cd /tmp/ejabberd-18.03; make install
 
