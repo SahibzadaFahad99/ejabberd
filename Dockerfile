@@ -17,8 +17,8 @@ RUN cd /tmp; wget -O es.rpm https://packages.erlang-solutions.com/erlang-solutio
 RUN cd /tmp; rpm -Uvh es.rpm
 RUN yum install -y esl-erlang
 
-RUN cd /tmp; wget -O ejabberd.zip http://dev.whizpool.com/ejabberd/ejabberd-18.03.zip
-RUN cd /tmp; unzip ejabberd.zip
+RUN cd /tmp; wget -O ejabberd.tgz http://dev.whizpool.com/ejabberd/ejabberd-18.03.tgz
+RUN cd /tmp; tar -xf ejabberd.tgz
 
 RUN cd /tmp/ejabberd-18.03; ./configure  --disable-graphics --enable-user=ejabberd --enable-mysql --enable-pam --enable-zlib
 RUN cd /tmp/ejabberd-18.03; make
