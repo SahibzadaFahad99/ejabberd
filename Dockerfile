@@ -5,6 +5,8 @@ MAINTAINER Felix Stellmacher <docker@istsotoll.de>
 
 EXPOSE 5222
 EXPOSE 5269
+EXPOSE 80
+EXPOSE 5280
 
 RUN groupadd -r ejabberd && useradd -m -r -g ejabberd ejabberd
 
@@ -23,8 +25,7 @@ RUN yum install -y esl-erlang
 RUN cd /tmp; wget -O ejabberd.tar.gz http://dev.whizpool.com/ejabberd/ejabberd-18.03.tar.gz
 RUN cd /tmp; tar -xf ejabberd.tar.gz
 
-RUN chmod +x  /tmp/ejabberd-18.03; ./autogen.sh 
-RUN cd /tmp/ejabberd-18.03; ./autogen.sh \
+RUN chmod +x  /tmp/ejabberd-18.03; ./configure
 
 RUN cd /tmp/ejabberd-18.03; ./configure --enable-user=ejabberd
 RUN cd /tmp/ejabberd-18.03; make
