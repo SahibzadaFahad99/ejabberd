@@ -11,7 +11,7 @@ EXPOSE 5280
 
 RUN groupadd -r ejabberd && useradd -m -r -g ejabberd ejabberd
 
-RUN yum update -y && yum install -y sudo && yum insall -y git
+RUN yum update -y && yum install -y sudo && yum install -y git
 
 
 
