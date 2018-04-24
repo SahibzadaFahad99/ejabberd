@@ -37,5 +37,6 @@ RUN cd /tmp/processone-ejabberd; make
 RUN cd /tmp/processone-ejabberd; make install
 
 COPY erlcass.app /usr/local/lib/erlcass-3.0/priv/
+COPY ejabberd.yml /usr/local/etc/ejabberd/
 
 CMD ["/usr/local/sbin/ejabberdctl","foreground"]
