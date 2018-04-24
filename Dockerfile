@@ -35,7 +35,5 @@ RUN cd /tmp/processone-ejabberd; ./configure  --disable-graphics --enable-user=e
 RUN cd /tmp/processone-ejabberd; make
 RUN cd /tmp/processone-ejabberd; make install
 
-RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
-USER docker
 CMD ["/usr/local/sbin/ejabberdctl","foreground"]
