@@ -6,8 +6,7 @@ MAINTAINER Felix Stellmacher <docker@istsotoll.de>
 
 EXPOSE 5222
 EXPOSE 5269
-EXPOSE 80
-EXPOSE 5280
+
 
 RUN groupadd -r ejabberd && useradd -m -r -g ejabberd ejabberd
 
