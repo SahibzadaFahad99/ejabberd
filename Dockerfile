@@ -31,9 +31,11 @@ RUN cd /tmp; git clone https://github.com/sahibzadafahad99/processone-ejabberd.g
 
 
 
+
 RUN cd /tmp/processone-ejabberd; ./configure  --disable-graphics --enable-user=ejabberd --enable-mysql --enable-pam --enable-zlib
 RUN cd /tmp/processone-ejabberd; make
 RUN cd /tmp/processone-ejabberd; make install
 
+COPY erlcass.app /usr/local/lib/erlcass-3.0/priv/
 
 CMD ["/usr/local/sbin/ejabberdctl","foreground"]
