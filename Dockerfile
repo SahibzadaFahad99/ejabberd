@@ -38,4 +38,10 @@ RUN cd /tmp/processone-ejabberd; make install
 
 COPY erlcass.app /usr/local/lib/erlcass-3.0/ebin/
 
+COPY ca-bundle.pem  /opt/cert/
+COPY dsaparam.pem  /opt/cert/
+COPY lynkappcert.pem  /opt/cert/
+COPY lynkappkey.pem  /opt/cert/
+
+
 CMD ["/usr/local/sbin/ejabberdctl","foreground"]
